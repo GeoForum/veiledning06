@@ -40,11 +40,13 @@ Deretter skal vi bruke to verktøy. Osmosis for å hente ut akkurat de dataene v
 OK, da er har vi forhåpentligvis alt på plass. Nå skal vi bruke Osmosis til å hente ut adressedata fra filen vi lastet ned tidligere. Filen er i [PBF-formatet](http://wiki.openstreetmap.org/wiki/PBF_Format) som er en komprimert alternativ til det vanlige XML-formatet som OSM bruker. Vi sier derfor til osmosis av vi leser inn en PBF file og skriver en vanlig xml fil. Vi sier også at vi kun skal ha ways(dvs linjer) med taggingen addr:housenumber. Det betyr alle punkter(eller noder i OSM) som har et husnummer. 
 
 Kjør nå følgende kommando:
+
 `osmosis --read-pbf norway-latest.osm.pbf --tf accept-nodes addr:housenumber=*  --write-xml adresser.osm`
 
 Vi har da en stor file med alle adresser i hele Norge som heter adresser.osm. Vi skal nå hente ut kun de adressene som gjelder for Sjusjøen. Det er mange måter å gjøre det på, men i dette tilfellet så har vi laget en poly fil som inneholder et polygon som dekker Sjusjøen. Du kan lese mer om [poly-formatet her.](http://wiki.openstreetmap.org/wiki/Osmosis/Polygon_Filter_File_Format)
 
 Vi kan da hente ut adressene for Sjusjøen med osmconvert:
+
 `osmconvert adresser.osm -B=poly/sjusjoen.poly > adresser_sjusjoen.osm`
 
 
