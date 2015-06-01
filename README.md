@@ -15,9 +15,13 @@ Først skal vi eksportere de populære skiløypene på Sjusjøen ved Lillehammer
 
 Venstre del består at et tekstfelt med noe kode. Og høyre av kartet. Start med å trykke på "Run"-knappen oppe i venstre hjørne. Du ser nå at alle skiløyper vises i kartet til høyre. Vi skal ikke gå igjennom hvordan du koder kodden til venstre i denne veiledningen, men en way i OpenStreetMap betyr en linjeobjekt og skiløyper tagges med piste:type=nordic i OpenStreetMap. 
 
+![img/data01.png](img/overpass1.png)
+
 Den letteste måten å finne andre objekter på er å trykke på "Wizard"-knappen øverst og legge inn de taggene en ønsker. Det er gitt noen eksempler i dialogboksen som kommer opp. Prøv deg hjerne fram, men husk å gå tilbake til koden for å hente ut skiløyper før du går videre. 
 
 Etter at du trykker på "Run"-knappen og får skiløypene i kartet så kan du enkelt eksportere disse dataene ved å trykke på "Export". Deretter trykker du på geoJSON linken og venter til dataene er lastet ned. Det er lurt å endre navnet på filen til skiloyper.geojson når filen er lastet ned. 
+
+![img/data01.png](img/overpass2.png)
 
 #### Osmosis og osmconvert
 
