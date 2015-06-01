@@ -35,7 +35,7 @@ Deretter skal vi bruke to verktøy. Osmosis for å hente ut akkurat de dataene v
 - [Osmosis på Windows](http://wiki.openstreetmap.org/wiki/Osmosis/Quick_Install_%28Windows%29)
 - [Osmosis på Mac](http://wiki.openstreetmap.org/wiki/Osmosis/Installation)
 - [Osmconvert på Windows](http://wiki.openstreetmap.org/wiki/Osmconvert#Download)
-- Osmconvert på Mac. Kjør  wget -O - http://m.m.i24.cc/osmconvert.c | cc -x c - -lz -O3 -o osmconvert
+- Osmconvert på Mac. Kjør  `wget -O - http://m.m.i24.cc/osmconvert.c | cc -x c - -lz -O3 -o osmconvert`
 
 OK, da er har vi forhåpentligvis alt på plass. Nå skal vi bruke Osmosis til å hente ut adressedata fra filen vi lastet ned tidligere. Filen er i [PBF-formatet](http://wiki.openstreetmap.org/wiki/PBF_Format) som er en komprimert alternativ til det vanlige XML-formatet som OSM bruker. Vi sier derfor til osmosis av vi leser inn en PBF file og skriver en vanlig xml fil. Vi sier også at vi kun skal ha ways(dvs linjer) med taggingen addr:housenumber. Det betyr alle punkter(eller noder i OSM) som har et husnummer. 
 
