@@ -1,0 +1,33 @@
+#skiloyper_sjusjoen{
+  line-color: #F11810;
+  line-width: 2;
+  line-opacity: 1;
+}
+
+#skiloyper_sjusjoen[piste_grooming='scooter']{
+  line-color: #F11810;
+  line-width: 2; 
+  line-dasharray: 2,3;
+  line-opacity: 1;
+}
+
+#skiloyper_sjusjoen[lit='yes']{
+  line-color: #5CA2D1;
+  line-width: 4; 
+  line-dasharray: 6,8;
+  line-opacity: 1;
+}
+
+#skiloyper_sjusjoen::labels {
+  text-name: [name];
+  text-face-name: 'DejaVu Sans Book';
+  text-size: 12;
+  text-label-position-tolerance: 10;
+  text-fill: #F11810;
+  text-halo-fill: #FFF;
+  text-halo-radius: 1.5;
+  text-dy: -10;
+  text-allow-overlap: false;
+  text-placement: line;
+  text-placement-type: simple;
+}
