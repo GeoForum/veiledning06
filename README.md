@@ -15,15 +15,15 @@ Først skal vi eksportere de populære skiløypene på Sjusjøen ved Lillehammer
 
 Venstre del består at et tekstfelt med noe kode. Og høyre av kartet. Start med å trykke på "Run"-knappen oppe i venstre hjørne. Du ser nå at alle skiløyper vises i kartet til høyre. Vi skal ikke gå igjennom hvordan du koder kodden til venstre i denne veiledningen, men en way i OpenStreetMap betyr en linjeobjekt og skiløyper tagges med piste:type=nordic i OpenStreetMap. 
 
-![img/data01.png](img/overpass1.png)
+![overpass](img/overpass1.png)
 
 Den letteste måten å finne andre objekter på er å trykke på "Wizard"-knappen øverst og legge inn de taggene en ønsker. Det er gitt noen eksempler i dialogboksen som kommer opp. Prøv deg hjerne fram, men husk å gå tilbake til koden for å hente ut skiløyper før du går videre. 
 
-![img/data01.png](img/overpass3.png)
+![overpass](img/overpass3.png)
 
 Etter at du trykker på "Run"-knappen og får skiløypene i kartet så kan du enkelt eksportere disse dataene ved å trykke på "Export". Deretter trykker du på geoJSON linken og venter til dataene er lastet ned. Det er lurt å endre navnet på filen til skiloyper.geojson når filen er lastet ned. 
 
-![img/data01.png](img/overpass2.png)
+![overpass](img/overpass2.png)
 
 #### Osmosis og osmconvert
 
@@ -52,7 +52,74 @@ Vi kan da hente ut adressene for Sjusjøen med osmconvert:
 
 ### Importer data i Cartodb
 
+Vi skal nå importere dataene våre og lage et enkelt skikart. Først må du opprette en gratis konto hos Cartodb hvis du ikke allerede har det:
+
+https://cartodb.com/signup
+
+Gå deretter til "Your datasets" i toppemenyen. 
+
+![cartodb](img/cartodb1.png)
+
+Trykk så på "New Dataset" og velg deretter "Select a file". Velg nå først adresser_sjusjoen.osm og trykk på "Connect Dataset".
+
+![cartodb](img/cartodb2.png)
+
+Gjenta hele prosessen og velg skiloyper_sjusjoen.geojson. Merk at vi har to filer med forskjellig format, men Cartodb forstår forskjellen og leser de automatisk inn. Kommer du inn i tabellen til adresser_sjusjoen så trykk bare på pila øverst i venstre for å komme tilbake til hovedsida. 
+
+Når begge datasettene er markert så klikker du på begge slik at de blir markert og velger "Create map" ovenfor. 
+
+![cartodb](img/cartodb3.png)
+
+Du få nå opp et kart hvor Cartodb allerede har laget en enkel kartografi for deg. 
+
+![cartodb](img/cartodb4.png)
+
+På høyre side av kartet har noen faner der du kan velge mellom skiløypene eller addressepunktene. Klikk på den av de som sier skiloyper_sjusjoen når du holder musepekeren over den. 
+
+![cartodb](img/cartodb5.png)
+
+Du kan nå trykke på Wizard-knappen og så skal vi endre litt på kartografien. Vi legger til en label på de skiløypene som har et navn, som f. eks. Birkebeinerløypa. Her kan du leike deg litt fram og prøve forskjellige ting. I mitt eksempel så har jeg satt alle verdier slik:
+
+![cartodb](img/cartodb6.png)
+
+Vi skal også endre litt på kartografien for å vise fram skiløyper som er skuterkjørt og skiløyper med lys. For å gjøre dette trykker vi på CSS-knappen og legger til følgende kode:
+
+```
+#skiloyper_sjusjoen[piste_grooming='scooter']{
+  line-color: #F11810;
+  line-width: 2; 
+  line-dasharray: 2,3;
+  line-opacity: 1;
+}
+
+#skiloyper_sjusjoen[lit='yes']{
+  line-color: #5CA2D1;
+  line-width: 4; 
+  line-opacity: 1;
+}
+```
+
+Koden sier at hvis en skiløype er skuterkjørt så skal vi ha en stipla linje og hvis skiløypa har lys(lit=yes) så skla vi tegne den med en litt annen farge. Du bør da kunne se minst en skuterkjørt skiløype og lysløypa ved Sjusjøen stadion. 
+
+![cartodb](img/cartodb7.png)
+
+Til slutt skal vi dempe adresse punktene litt. Trykk da på fanen som sier adresser_sjusjoen_points, deretter på Wizard-knappen og justere verdiene som dette:
+
+![cartodb](img/cartodb8.png)
+
+Og med den endringen så har vi et fiks ferdig skiløypekart over Sjusjøen. 
+
+![cartodb](img/cartodb9.png)
+
 ### Vise data i kart
+
+Helt til slutt skal vi vise hvordan du kan bruke dette kartet på ditt eget nettsted. Trykk Share-knappen øverst i høyre hjørne. Du kan da enten hente kartet med en egen URL:
+
+https://turkompisen.cartodb.com/viz/f74738c8-08fd-11e5-8412-0e853d047bba/public_map
+
+Eller du kan embedde kartet i egen HTML:
+
+
 
 
 
