@@ -118,7 +118,7 @@ Helt til slutt skal vi vise hvordan du kan bruke dette kartet på ditt eget nett
 https://turkompisen.cartodb.com/viz/f74738c8-08fd-11e5-8412-0e853d047bba/public_map
 
 Eller du kan embedde kartet i egen HTML:
-
+https://htmlpreview.github.io/?https://github.com/GeoForum/veiledning06/blob/master/index.html
 
 
 
