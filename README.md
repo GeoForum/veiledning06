@@ -4,24 +4,24 @@
 
 I denne veiledningen skal vi hente ut noe data fra OpenStreetMap og vise fram på et kart med enkel kartografi. Vi skal se på to ulike metoder for å hente ut data fra OpenStreetMap og vi skal bruke Cartodb tjenesten for å vise fram dataene. 
 
-Det finnes også en veiledning 07 som bruker det vi har lært i denne veiledningen og gjør noen analyser på dataene i Cartodb. 
+Det finnes også en veiledning 07 der vi bruker det vi har lært i denne veiledningen og gjør noen analyser på dataene i Cartodb. 
 
 ### Eksporter data fra OpenStreetMap
 
-OpenStreetMap er et dugnadsbasert kart der alle kan bidra. Vi skal eksportere skiløyper og adressedata på to ulike metoder. 
+OpenStreetMap er et dugnadsbasert kart der alle kan bidra. Vi skal eksportere skiløyper og adressedata med to ulike metoder. 
 
 #### Overpass API
-Først skal vi eksportere de populære skiløypene på Sjusjøen ved Lillehammer. Vi skal bruke en tjeneste som heter Overpass Turbo for å eksportere disse dataene. Start med å åpne [http://overpass-turbo.eu/s/9Hj](http://overpass-turbo.eu/s/9Hj). Du ser nå at kartet allerede er plassert over Sjusjøen. 
+Først skal vi eksportere de populære skiløypene på Sjusjøen ved Lillehammer. Vi skal bruke en tjeneste som heter Overpass Turbo for å eksportere disse dataene. Start med å åpne [http://overpass-turbo.eu/s/9Hj](http://overpass-turbo.eu/s/9Hj). Du ser nå at kartet allerede er plassert over Sjusjøen. Avhengig av skjermstørrelsen din må du kanskje justere kartet noe. 
 
-Venstre del består at et tekstfelt med noe kode. Og høyre av kartet. Start med å trykke på "Run"-knappen oppe i venstre hjørne. Du ser nå at alle skiløyper vises i kartet til høyre. Vi skal ikke gå igjennom hvordan du koder kodden til venstre i denne veiledningen, men en way i OpenStreetMap betyr en linjeobjekt og skiløyper tagges med piste:type=nordic i OpenStreetMap. 
+Venstre del består at et tekstfelt med noe kode. Og høyre av kartet. Start med å trykke på "Run"-knappen oppe i venstre hjørne. Du ser nå at alle skiløyper vises i kartet til høyre. Vi skal ikke gå igjennom hvordan du koder koden til venstre i denne veiledningen, men en way i OpenStreetMap betyr en linjeobjekt og skiløyper tagges med piste:type=nordic. 
 
 ![overpass](img/overpass1.png)
 
-Den letteste måten å finne andre objekter på er å trykke på "Wizard"-knappen øverst og legge inn de taggene en ønsker. Det er gitt noen eksempler i dialogboksen som kommer opp. Prøv deg hjerne fram, men husk å gå tilbake til koden for å hente ut skiløyper før du går videre. 
+Den letteste måten å finne andre objekter på er å trykke på "Wizard"-knappen øverst og legge inn de taggene en ønsker. Det er gitt noen eksempler i dialogboksen som kommer opp. Prøv deg gjerne fram, men husk å gå tilbake til [koden for å hente ut skiløyper](http://overpass-turbo.eu/s/9Hj) før du går videre. 
 
 ![overpass](img/overpass3.png)
 
-Etter at du trykker på "Run"-knappen og får skiløypene i kartet så kan du enkelt eksportere disse dataene ved å trykke på "Export". Deretter trykker du på geoJSON linken og venter til dataene er lastet ned. Det er lurt å endre navnet på filen til skiloyper.geojson når filen er lastet ned. 
+Etter at du trykker på "Run"-knappen og får skiløypene i kartet så kan du enkelt eksportere disse dataene ved å trykke på "Export". Deretter trykker du på geoJSON linken og venter til dataene er lastet ned. Pass på å endre navnet på filen til skiloyper.geojson når filen er lastet ned. 
 
 ![overpass](img/overpass2.png)
 
@@ -33,11 +33,11 @@ Vi skal først laste ned dagsoppdaterte OpenStreetMap data for hele Norge. Gå t
 
 Deretter skal vi bruke to verktøy. Osmosis for å hente ut akkurat de dataene vi trenger og osmconvert for å filtrere ut data kun over Sjusjøen. Start med å innstallere Osmosis og osmconvert. Du finner oppskrifter for hvordan du gjør dette for Windows og Mac her:
 - [Osmosis på Windows](http://wiki.openstreetmap.org/wiki/Osmosis/Quick_Install_%28Windows%29)
-- [Osmosis på Mac](http://wiki.openstreetmap.org/wiki/Osmosis/Installation)
+- [Osmosis på Mac](http://wiki.openstreetmap.org/wiki/Osmosis/Installation#OS_X)
 - [Osmconvert på Windows](http://wiki.openstreetmap.org/wiki/Osmconvert#Download)
-- Osmconvert på Mac. Kjør  `wget -O - http://m.m.i24.cc/osmconvert.c | cc -x c - -lz -O3 -o osmconvert`
+- Osmconvert på Mac. Kjør denne kommandoen i et terminalvindu `wget -O - http://m.m.i24.cc/osmconvert.c | cc -x c - -lz -O3 -o osmconvert`
 
-OK, da er har vi forhåpentligvis alt på plass. Nå skal vi bruke Osmosis til å hente ut adressedata fra filen vi lastet ned tidligere. Filen er i [PBF-formatet](http://wiki.openstreetmap.org/wiki/PBF_Format) som er en komprimert alternativ til det vanlige XML-formatet som OSM bruker. Vi sier derfor til osmosis av vi leser inn en PBF file og skriver en vanlig xml fil. Vi sier også at vi kun skal ha ways(dvs linjer) med taggingen addr:housenumber. Det betyr alle punkter(eller noder i OSM) som har et husnummer. 
+OK, da er har vi forhåpentligvis alt på plass. Nå skal vi bruke Osmosis til å hente ut adressedata fra filen vi lastet ned tidligere. Filen er i [PBF-formatet](http://wiki.openstreetmap.org/wiki/PBF_Format) som er en komprimert alternativ til det vanlige XML-formatet som OSM bruker. Vi sier derfor til osmosis av vi leser inn en PBF file og skriver til en vanlig xml fil. Vi sier også at vi kun skal ha ways(dvs linjer) med taggingen addr:housenumber. Det betyr alle punkter(eller noder i OSM) som har et husnummer. 
 
 Kjør nå følgende kommando:
 
@@ -56,7 +56,7 @@ Vi skal nå importere dataene våre og lage et enkelt skikart. Først må du opp
 
 https://cartodb.com/signup
 
-Gå deretter til "Your datasets" i toppemenyen. 
+Gå deretter til "Your datasets" i toppmenyen. 
 
 ![cartodb](img/cartodb1.png)
 
@@ -66,7 +66,7 @@ Trykk så på "New Dataset" og velg deretter "Select a file". Velg nå først ad
 
 Gjenta hele prosessen og velg skiloyper_sjusjoen.geojson. Merk at vi har to filer med forskjellig format, men Cartodb forstår forskjellen og leser de automatisk inn. Kommer du inn i tabellen til adresser_sjusjoen så trykk bare på pila øverst i venstre for å komme tilbake til hovedsida. 
 
-Når begge datasettene er markert så klikker du på begge slik at de blir markert og velger "Create map" ovenfor. 
+Når begge datasettene er importert så klikker du på begge slik at de blir markert og velger "Create map" ovenfor. 
 
 ![cartodb](img/cartodb3.png)
 
@@ -99,7 +99,7 @@ Vi skal også endre litt på kartografien for å vise fram skiløyper som er sku
 }
 ```
 
-Koden sier at hvis en skiløype er skuterkjørt så skal vi ha en stipla linje og hvis skiløypa har lys(lit=yes) så skla vi tegne den med en litt annen farge. Du bør da kunne se minst en skuterkjørt skiløype og lysløypa ved Sjusjøen stadion. 
+Koden sier at hvis en skiløype er skuterkjørt så skal vi ha en stipla linje og hvis skiløypa har lys(lit=yes) så skal vi tegne den med en litt annen farge. Du bør da kunne se minst en skuterkjørt skiløype og lysløypa ved Sjusjøen stadion. 
 
 ![cartodb](img/cartodb7.png)
 
