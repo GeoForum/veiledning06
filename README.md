@@ -115,7 +115,7 @@ Og med den endringen så har vi et fiks ferdig skiløypekart over Sjusjøen.
 
 Helt til slutt skal vi vise hvordan du kan bruke dette kartet på ditt eget nettsted. Trykk Share-knappen øverst i høyre hjørne. Du kan da enten hente kartet med en egen URL:
 
-https://turkompisen.cartodb.com/viz/f74738c8-08fd-11e5-8412-0e853d047bba/public_map
+https://geoforum.cartodb.com/viz/9103c37e-0d44-11e5-b446-0e018d66dc29/public_map
 
 Eller du kan embedde kartet i egen HTML:
 https://htmlpreview.github.io/?https://github.com/GeoForum/veiledning06/blob/master/index.html
